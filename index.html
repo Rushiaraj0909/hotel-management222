@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hotel Management System</title>
+  <style>
+    body { font-family: Arial; margin: 0; padding: 0; }
+    header { background: #2c3e50; padding: 15px; color: #fff; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; }
+    .container { padding: 20px; }
+    .auth-container, .booking-container, .smartroom-container { 
+      max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; 
+    }
+    input, select, button { width: 100%; padding: 10px; margin: 8px 0; }
+    button { background: #2980b9; color: white; border: none; cursor: pointer; }
+    button:hover { background: #3498db; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DoubleTree by Hilton</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#" onclick="openSection('login')">Login</a>
+      <a href="#" onclick="openSection('signup')">Sign Up</a>
+      <a href="#" onclick="openSection('booking')">Booking</a>
+      <a href="#" onclick="openSection('smartroom')">Smart Room</a>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <!-- Home -->
+    <div id="home">
+      <h2>Welcome to DoubleTree by Hilton</h2>
+      <p>Experience luxury, comfort, and convenience with our premium hotel management system.</p>
+    </div>
+
+    <!-- Login -->
+    <div class="auth-container" id="login" style="display:none;">
+      <h2>Login</h2>
+      <form>
+        <label>Email</label>
+        <input type="email" required>
+        <label>Password</label>
+        <input type="password" required>
+        <label>Role</label>
+        <select>
+          <option value="guest">Guest</option>
+          <option value="staff">Staff</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button>Login</button>
+      </form>
+    </div>
+
+    <!-- Signup -->
+    <div class="auth-container" id="signup" style="display:none;">
+      <h2>Sign Up</h2>
+      <form onsubmit="return showLoginPage(event)">
+        <label>Name</label>
+        <input type="text" required>
+        <label>Email</label>
+        <input type="email" required>
+        <label>Password</label>
+        <input type="password" required>
+        <label>Role</label>
+        <select>
+          <option value="guest">Guest</option>
+          <option value="staff">Staff</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button>Sign Up</button>
+      </form>
+    </div>
+
+    <!-- Booking -->
+    <div class="booking-container" id="booking" style="display:none;">
+      <h2>Book a Room</h2>
+      <form>
+        <label>Check-in Date</label>
+        <input type="date" required>
+        <label>Check-out Date</label>
+        <input type="date" required>
+        <label>Room Type</label>
+        <select>
+          <option>Single</option>
+          <option>Double</option>
+          <option>Suite</option>
+        </select>
+        <button>Book Now</button>
+      </form>
+    </div>
+
+    <!-- Smart Room -->
+    <div class="smartroom-container" id="smartroom" style="display:none;">
+      <h2>Smart Room Features</h2>
+      <form>
+        <label>Lights</label>
+        <select>
+          <option>On</option>
+          <option>Off</option>
+          <option>Dim</option>
+        </select>
+
+        <label>Air Conditioner</label>
+        <select>
+          <option>Off</option>
+          <option>18°C</option>
+          <option>22°C</option>
+          <option>26°C</option>
+        </select>
+
+        <label>Smart Lock</label>
+        <select>
+          <option>Locked</option>
+          <option>Unlocked</option>
+        </select>
+
+        <label>TV</label>
+        <select>
+          <option>Off</option>
+          <option>News</option>
+          <option>Sports</option>
+          <option>Movies</option>
+        </select>
+
+        <button type="button" onclick="alert('Smart Room settings applied!')">Apply Settings</button>
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    function openSection(id) {
+      let sections = ["home", "login", "signup", "booking", "smartroom"];
+      sections.forEach(sec => document.getElementById(sec).style.display = "none");
+      document.getElementById(id).style.display = "block";
+    }
+
+    function showLoginPage(e) {
+      e.preventDefault();
+      alert("Signup successful! Please login now.");
+      openSection("login");
+      return false;
+    }
+  </script>
+</body>
+</html>
